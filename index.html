@@ -1,59 +1,344 @@
-<section id="products">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Cake Factory</title>
+  
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<h2>Our Products</h2>
+    html {
+      scroll-behavior: smooth;
+    }
 
-<div class="grid">
+    body {
+      background-color: #fffafb;
+      color: #333;
+      line-height: 1.6;
+    }
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
-<h3>Birthday Cakes</h3>
-</div>
+    section {
+      padding: 80px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1551024601-bec78aea704b">
-<h3>Cupcakes</h3>
-</div>
+    h2 {
+      text-align: center;
+      color: #ff5b99;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      position: relative;
+    }
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d">
-<h3>Pastries</h3>
-</div>
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #ff5b99;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1464306076886-da185f6a9d05">
-<h3>Chocolate Cake</h3>
-</div>
+    /* Navbar Styles */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      box-shadow: 0 2px 15px rgba(0,0,0,.08);
+    }
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c">
-<h3>Red Velvet Cake</h3>
-</div>
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ff5b99;
+    }
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729">
-<h3>Fruit Cake</h3>
-</div>
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e">
-<h3>Cookies</h3>
-</div>
+    .navbar a {
+      text-decoration: none;
+      color: #ff5b99;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1509440159596-0249088772ff">
-<h3>Donuts</h3>
-</div>
+    .navbar a:hover {
+      color: #d13b73;
+    }
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1488477181946-6428a0291777">
-<h3>Brownies</h3>
-</div>
+    /* About Section */
+    .about {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1559622214-f8a9850965bb">
-<h3>Desserts</h3>
-</div>
+    /* Grid & Cards Styles */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
 
-</div>
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      text-align: center;
+      padding-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-</section>
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 15px 0 10px;
+      color: #444;
+    }
+
+    /* Speciality Section Particulars */
+    .special .card {
+      padding: 30px 20px;
+    }
+
+    .special .card p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* Find Us Section */
+    #findus {
+      text-align: center;
+    }
+
+    #findus p {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 350px;
+      border: 0;
+      border-radius: 12px;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    /* Contact Section & Form */
+    #contact {
+      text-align: center;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: #ff5b99;
+    }
+
+    form textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    form button {
+      background: #ff5b99;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background: #d13b73;
+    }
+
+    .contact-info p {
+      margin: 8px 0;
+      font-size: 1.05rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">The Cake Factory</div>
+    <ul>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#speciality">Speciality Cakes</a></li>
+      <li><a href="#findus">Find Us</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="about">
+      <p>
+        Welcome to The Cake Factory, where every celebration becomes sweeter.
+        We specialize in freshly baked cakes, pastries, cupcakes and custom
+        desserts crafted with premium ingredients and artistic designs.
+      </p>
+      <br>
+      <p>
+        Whether it's a birthday, anniversary, wedding or special event,
+        our bakers create memorable cakes that look beautiful and taste amazing.
+        Our goal is to deliver happiness in every slice.
+      </p>
+    </div>
+  </section>
+
+  <section id="products">
+    <h2>Our Products</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587" alt="Birthday Cakes">
+        <h3>Birthday Cakes</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b" alt="Cupcakes">
+        <h3>Cupcakes</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d" alt="Pastries">
+        <h3>Pastries</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1464306076886-da185f6a9d05" alt="Chocolate Cake">
+        <h3>Chocolate Cake</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c" alt="Red Velvet Cake">
+        <h3>Red Velvet Cake</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729" alt="Fruit Cake">
+        <h3>Fruit Cake</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e" alt="Cookies">
+        <h3>Cookies</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff" alt="Donuts">
+        <h3>Donuts</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777" alt="Brownies">
+        <h3>Brownies</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1559622214-f8a9850965bb" alt="Desserts">
+        <h3>Desserts</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="speciality" class="special">
+    <h2>Speciality Cakes</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>🎂 Birthday Cakes</h3>
+        <p>Customized birthday cakes for every age.</p>
+      </div>
+      <div class="card">
+        <h3>💍 Wedding Cakes</h3>
+        <p>Elegant multi-tier wedding cakes.</p>
+      </div>
+      <div class="card">
+        <h3>❤️ Anniversary Cakes</h3>
+        <p>Romantic cakes for memorable celebrations.</p>
+      </div>
+      <div class="card">
+        <h3>🖼️ Photo Cakes</h3>
+        <p>Your favorite photo printed on cake.</p>
+      </div>
+      <div class="card">
+        <h3>🎨 Designer Cakes</h3>
+        <p>Luxury handcrafted designer cakes.</p>
+      </div>
+      <div class="card">
+        <h3>✨ Theme Cakes</h3>
+        <p>Cartoon, superhero and custom themes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="findus">
+    <h2>Find Us</h2>
+    <p><strong>The Cake Factory - Khala Bazar</strong></p>
+    <p>📍 Khala Bazar, Lucknow</p>
+    <p>📞 +91 XXXXX XXXXX</p>
+    <iframe src="https://maps.google.com/maps?q=Khala%20Bazar,%20Lucknow&t=&z=13&ie=UTF-8&iwloc=&output=embed"></iframe>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form action="#" method="POST">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email" required>
+      <input type="tel" placeholder="Phone Number">
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Inquiry</button>
+    </form>
+    
+    <div class="contact-info">
+      <p>📞 +91 XXXXX XXXXX</p>
+      <p>📸 Instagram: @thecakefactory_khalabazar</p>
+      <p>⏰ Open Daily: 10:00 AM - 10:00 PM</p>
+    </div>
+  </section>
+
+</body>
+</html>
